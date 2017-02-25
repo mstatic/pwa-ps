@@ -61,12 +61,20 @@
         </div>
     </script>
 
-    <script src="resources/fetch.js"></script>
-    <script src="resources/es6-promise.js"></script>
-    <script src="resources/system-production.src.js"></script>
+    <!--<script src="resources/fetch.js"></script>
+    <script src="resources/es6-promise.js"></script>-->
+    <script src="resources/system.js"></script>
 
     <script>
-        System.import('./src/app.js');
+        SystemJS.config({
+            map: {
+                'plugin-babel': 'resources/plugin-babel.js',
+                'systemjs-babel-build': 'resources/systemjs-babel-browser.js'
+            },
+            transpiler: 'plugin-babel'
+        });
+        SystemJS.import('./src/app.js');
     </script>
 </body>
+
 </html>
