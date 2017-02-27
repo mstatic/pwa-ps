@@ -7,16 +7,18 @@ function generateCard(car) {
     let title = `${car.brand} ${car.model} ${car.year}`;
 
     template = template.replace('{{title}}', title);
+    template = template.replace('{{details-id}}', `'${car.details_id}'`);
     template = template.replace('{{image}}', car.image);
     template = template.replace('{{price}}', car.price);
     return template;
 }
 
 function appendCars(cars) {
+    document.getElementById('first-load').innerHTML = '';
     let cardHTML = '';
 
     cars.forEach((car) => {
-        cardHTML += generateCard(car.value);
+        cardHTML += generateCard(car);
     });
 
     $gridOnPage.insertAdjacentHTML('beforeend', cardHTML);
